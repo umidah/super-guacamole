@@ -1,5 +1,7 @@
 import json_reader as jr
 import os
+
+#File Reader
 data_filename = "../data.json"
 json_file = open(os.path.dirname(__file__) + data_filename)
 
