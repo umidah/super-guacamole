@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>shalackathon</title>
 </head>
 <body>
-    <table>
+    <table style="align-content: center;">
         <tr style="height: 15%;">
             <td>
                 <div>
@@ -20,24 +21,64 @@
             </td>
         </tr>
         <tr style="height: 50%;">
-            FORM INPUT <br>
-            <form id="form">
-                <table id="formTable">
-                    <tr if="row0"> <!--put the form shit here-->
+            <td>
+                FORM INPUT <br>
+                <p id="error" style="color: red;">
+
+                </p>
+                <table id="display" style="border: 1px solid black; border-collapse: collapse;">
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>STOCK</th>
+                    </tr>
+                </table style="align-content: center">
+                <form id="form" action="./index.php" method="POST">
+                    <tr>
                         <td>
-                            <input type="text" name="name0" id="name0">
-                        </td>
-                        <td>
-                            <input type="number" name="age0" id="age0">
-                        </td>
-                        <td>
-                            <input type="button" value="log" onclick="owo()">
+                            <input type="button" id="load" value="load" onclick="pekpek()"> RN the user is coded into the index.js file. To add a user/login system.
                         </td>
                     </tr>
-                </table>
-            </form>
+                    <table id="formTable">
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>PRICE</th>
+                            <th>STOCK</th>
+                        </tr>
+                        <tr if="row0"> <!--put the form shit here-->
+                            <td>
+                                <input type="number" name="id0" id="id0">
+                            </td>
+                            <td>
+                                <input type="text" name="name0" id="name0">
+                            </td>
+                            <td>
+                                <input type="number" name="price0" id="price0">
+                            </td>
+                            <td>
+                                <input type="number" name="stock0" id="stock0">
+                            </td>
+                            <td>
+                                <input type="button" id="log" value="log" onclick="owo()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" id="rowNum" max="1" min="1" value="1" style="width: 46%">
+                                <input type="button" id="edit" value="Edit Row" onclick="edit()" style="width: 46%">
+                            </td>
+                        </tr>
+                    </table>
+                    <p>
+                        <!-- <input type="button" value="Submit" onclick="isValid()"> -->
+                    </p>
+                </form>
+            </td>
         </tr>
     </table>
 </body>
-<script src="./index.js"></script>
+<script src="./index.js">
+</script>
 </html>
