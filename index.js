@@ -38,10 +38,10 @@ function owo() {
         makeJSON();
         //ajaxTest();
         addMax();
+        clearRow();
     }
     currRow = rowNum;
     console.log(currRow);
-    clearRow();
     updateDisplay();
 }
 
@@ -50,6 +50,20 @@ function pekpek() {
     console.log("im in");
     getJSON();
     console.log("im out");
+}
+
+function editRow() {
+    let line = 0;
+    currRow = document.getElementById("rowNum").value;
+    console.log("Edit row " + currRow);
+    document.getElementById(ids[0].concat(line)).value = vals[currRow-1].id;
+    document.getElementById(ids[1].concat(line)).value = vals[currRow-1].name;
+    document.getElementById(ids[2].concat(line)).value = vals[currRow-1].price;
+    document.getElementById(ids[3].concat(line)).value = vals[currRow-1].stock;
+    vals.splice(currRow-1, 1);
+    rowNum--;
+    console.log(vals);
+    updateDisplay()
 }
 
 function updateDisplay() {
@@ -72,20 +86,6 @@ function updateDisplay() {
         tr.appendChild(td4);
         document.getElementById("display").appendChild(tr);
     }
-}
-
-function edit() {
-    let line = 0;
-    currRow = document.getElementById("rowNum").value;
-    console.log("Edit row " + currRow);
-    document.getElementById(ids[0].concat(line)).value = vals[currRow-1].id;
-    document.getElementById(ids[1].concat(line)).value = vals[currRow-1].name;
-    document.getElementById(ids[2].concat(line)).value = vals[currRow-1].price;
-    document.getElementById(ids[3].concat(line)).value = vals[currRow-1].stock;
-    vals.splice(currRow-1, 1);
-    rowNum--;
-    console.log(vals);
-    updateDisplay()
 }
 
 function isValid() {
@@ -197,8 +197,9 @@ function getJSON() {
             id = "";
             stock = "";
             price = "";
-            rowNum = vals.length + 1;
+            rowNum = vals.length;
             console.log("done")
+            document.getElementById("rowNum").max = rowNum
             updateDisplay();
         }
     }
