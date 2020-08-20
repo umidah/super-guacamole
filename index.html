@@ -7,22 +7,17 @@
 </head>
 
 <body>
-    <div class = "login-box" id="form">
+    <div class = "login-box" id="login">
         <h2>LOGIN</h2>
         <div class="textbox">
-            <input type="text" placeholder="Username" name="name" required>
+            <input type="text" placeholder="Username" name="name" id="user" required>
         </div>
         <div class="textbox">
-            <input type="password" placeholder="Password" name="psw" required>
+            <input type="password" placeholder="Password" name="psw" id="psw" required>
         </div>
-        <input class="button" type="button" name="" value="Sign in" onclick="">
+        <input class="button" type="button" name="" value="Sign in" onclick="auth()">
     </div>
     <table>
-        <tr id="menu">
-            <td style="width: 33%"><a href="#">HOME</a></td>
-            <td style="width: 33%"><a href="#">INFO</a></td>
-            <td style="width: 33%"><a href="#">FORM</a></td>
-        </tr>
         <tr style="height: 35%;">
             <td colspan="3">
                 <div id="suggestion">
@@ -50,12 +45,6 @@
                     </tr>
                 </table style="align-content: center">
                 <form id="form" action="./index.php" method="POST">
-        <tr>
-            <td>
-                <input type="button" id="load" value="load" onclick="pekpek()"> RN the user is coded into the index.js
-                file. To add a user/login system.
-            </td>
-        </tr>
         <table id="formTable">
             <tr>
                 <th>ID</th>
@@ -68,7 +57,7 @@
             <tr if="row0">
                 <!--put the form shit here-->
                 <td>
-                    <input type="number" name="id0" id="id0" placeholder="identification">
+                    <input type="number" name="id0" id="id0" placeholder="id number">
                 </td>
                 <td>
                     <input type="text" name="name0" id="name0" placeholder="product name">
@@ -86,14 +75,15 @@
                     <input type="number" name="min0" id="min0" placeholder="min msrp">
                 </td>
                 <td>
-                    <input type="button" id="log" value="log" onclick="owo()">
+                    <input type="button" id="log" value="Log" onclick="owo()">
+                    <input type="button" id="search" value="Search" onclick="updateDisplay()">
                 </td>
             </tr>
             <tr>
-                <td>
-                    <input type="number" id="rowNum" max="1" min="1" value="1" style="width: 46%">
-                    <input type="button" id="edit" value="Edit Row" onclick="editRow()" style="width: 46%">
-                </td>
+                <td colspan="3">
+                    <input type="number" id="rowNum" max="1" min="1" style="width: 30%" placeholder="id number">
+                    <input type="button" id="edit" value="Edit" onclick="editRow()" style="width: 30%">
+                    <input type="button" id="rm" value="Remove" onclick="remove()" style="width: 30%">
             </tr>
         </table>
         <p>
