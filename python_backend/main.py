@@ -1,10 +1,11 @@
 import json_reader as jr
-data_filename = "/../data.json"
+import os
+data_filename = "../data.json"
 json_file = open(os.path.dirname(__file__) + data_filename)
 
 
 def main():
-	data_arr = jr.get_json_as_arr()
+	data_arr = jr.get_json_as_arr(json_file)
 	print(data_arr)
 
 
