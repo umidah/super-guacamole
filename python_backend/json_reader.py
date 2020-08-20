@@ -8,5 +8,5 @@ def get_json_as_arr(json_file):
 
 
 def write_to_json_file(json_file, json_obj):
-	json_obj = json.dump(json_obj, json_file)
+	 json.dump(json_obj, json_file)
 	
