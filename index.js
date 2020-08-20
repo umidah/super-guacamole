@@ -1,31 +1,18 @@
 //const fs = require('fs');
 
 var rowNum = 1;
-var types = ["number", "text", "number", "number"];
-var ids = ["id", "name", "price", "stock"];
+var types = ["number", "text", "number", "number", "number", "number"];
+var ids = ["id", "name", "price", "stock","max", "min"];
 var len = types.length;
 var vals = new Array();
 var json = "";
-var name = "", age = "", id = "", stock = "", price = "";
+var name = "", age = "", id = "", stock = "", price = "", min ="", max="";
 var curr = "kodi";
 var currRow;
+var jsonUsers = "";
+var users;
 
-class rowData {
-    constructor(id, name, price, stock){
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
-    }
-
-    get (name) {
-        if (name == "id") return this.id;
-        else if (name == "name") return this.name;
-        else if (name == "price") return this.price;
-        else if (name == "stock") return this.stock;
-        else return "N/A";
-    }
-}
+loadUsers();
 
 function owo() {
     //curr = document.getElementById("user").value;
@@ -60,6 +47,8 @@ function editRow() {
     document.getElementById(ids[1].concat(line)).value = vals[currRow-1].name;
     document.getElementById(ids[2].concat(line)).value = vals[currRow-1].price;
     document.getElementById(ids[3].concat(line)).value = vals[currRow-1].stock;
+    document.getElementById(ids[2].concat(line)).value = vals[currRow-1].max;
+    document.getElementById(ids[3].concat(line)).value = vals[currRow-1].min;
     vals.splice(currRow-1, 1);
     rowNum--;
     console.log(vals);
@@ -67,7 +56,7 @@ function editRow() {
 }
 
 function updateDisplay() {
-    document.getElementById("display").innerHTML = "<tr><th>ID</th><th>NAME</th><th>PRICE</th><th>STOCK</th></tr>";
+    document.getElementById("display").innerHTML = "<tr><th>ID</th><th>NAME</th><th>PRICE</th><th>STOCK</th><th>Max MSRP</th><th>Min MSRP</th>";
     for (let ind = 0; ind < vals.length; ind++) {
         console.log(ind);
         let data = vals[ind];
@@ -84,6 +73,12 @@ function updateDisplay() {
         let td4 = document.createElement("td");
         td4.innerHTML = vals[ind].stock;
         tr.appendChild(td4);
+        let td5 = document.createElement("td");
+        td5.innerHTML = vals[ind].max;
+        tr.appendChild(td5);
+        let td6 = document.createElement("td");
+        td6.innerHTML = vals[ind].min;
+        tr.appendChild(td6);
         document.getElementById("display").appendChild(tr);
     }
 }
@@ -91,10 +86,12 @@ function updateDisplay() {
 function isValid() {
     let cond = false;
     let cond2 = false;
+    if (document.getElementById(ids[0].concat(0)).value == "") cond = true;
+    if (document.getElementById(ids[1].concat(0)).value == "") cond = true;
+    if (document.getElementById(ids[2].concat(0)).value == "") cond = true;
     if (document.getElementById(ids[3].concat(0)).value == "") cond = true;
-    if (document.getElementById(ids[3].concat(0)).value == "") cond = true;
-    if (document.getElementById(ids[3].concat(0)).value == "") cond = true;
-    if (document.getElementById(ids[3].concat(0)).value == "") cond = true;
+    if (document.getElementById(ids[4].concat(0)).value == "") cond = true;
+    if (document.getElementById(ids[5].concat(0)).value == "") cond = true;
 
     for (let i = 0; i < vals.length; i++) {
         let curr = document.getElementById(ids[0].concat(0)).value;
@@ -146,11 +143,26 @@ function clearRow() {
 }
 
 function readVals(line) {
-    id = document.getElementById(ids[0].concat(line)).value;
-    name = document.getElementById(ids[1].concat(line)).value;
-    price = document.getElementById(ids[2].concat(line)).value;
-    stock = document.getElementById(ids[3].concat(line)).value;
-    let localVals = new rowData(id, name, price, stock);
+    let idL = document.getElementById(ids[0].concat(line)).value;
+    let nameL = document.getElementById(ids[1].concat(line)).value;
+    let priceL = document.getElementById(ids[2].concat(line)).value;
+    let stockL = document.getElementById(ids[3].concat(line)).value;
+    let maxL = document.getElementById(ids[4].concat(line)).value;
+    let minL = document.getElementById(ids[5].concat(line)).value;
+    let localVals = {
+        id: idL,
+        name: nameL,
+        price: priceL,
+        stock: stockL,
+        max: maxL,
+        min: minL,
+    }
+    id = idL;
+    name = nameL;
+    price = priceL;
+    stock = stockL;
+    max = maxL;
+    min = minL;
     json = JSON.stringify(localVals);
     vals.push(localVals);
 }
@@ -204,5 +216,18 @@ function getJSON() {
         }
     }
     xhttp.open("GET", "./read.php?user=" + curr, true);
+    xhttp.send();
+}
+
+function loadUsers(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            jsonUsers = this.responseText;
+            users = JSON.parse(jsonUsers);
+            console.log(users);
+        }
+    }
+    xhttp.open("GET", "./authPrep.php", true);
     xhttp.send();
 }

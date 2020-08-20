@@ -4,6 +4,58 @@ body{
     font-family: sans-serif;
     background: url(bg1.jpg) no-repeat;
     background-size: cover;
+    color: white;
+}
+
+#display * {
+    border: 1px solid #ffffff;
+    border-collapse: collapse;
+    width: 15%;
+    background-color: darkgray;
+}
+
+#formTable input[type=text], #formTable input[type=number] {
+    width: 100%;
+}
+
+#display, #formTable {
+    width: 70%;
+    margin: 0;
+
+}
+
+#menu {
+    text-align: center;
+    background-color: rgb(59, 59, 59);
+    color: #ffffff;
+    width: 70%;
+}
+
+#menu td a{
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+td a:hover {
+    color: darkgray;
+    background-color: lightgray;
+}
+
+#display tr:hover td {
+    background-color: lightgray;
+    color: darkgray;
+}
+
+#display tr th {
+    background-color: steelblue;
+    border: 0;
 }
 
 .login-box{
@@ -14,6 +66,10 @@ body{
     right: -5%;
     transform: translate(-50%, -50%);
     color: white;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
 }
 
 .login-box h2{
@@ -58,4 +114,9 @@ body{
     padding: 5px;
     font-size: 18px;
     cursor: pointer;
+}
+
+.button:hover {
+    color: black;
+    background-color: white;
 }

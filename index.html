@@ -7,8 +7,18 @@
 </head>
 
 <body>
+    <div class = "login-box" id="form">
+        <h2>LOGIN</h2>
+        <div class="textbox">
+            <input type="text" placeholder="Username" name="name" required>
+        </div>
+        <div class="textbox">
+            <input type="password" placeholder="Password" name="psw" required>
+        </div>
+        <input class="button" type="button" name="" value="Sign in" onclick="">
+    </div>
     <table>
-        <tr>
+        <tr id="menu">
             <td style="width: 33%"><a href="#">HOME</a></td>
             <td style="width: 33%"><a href="#">INFO</a></td>
             <td style="width: 33%"><a href="#">FORM</a></td>
@@ -35,6 +45,8 @@
                         <th>NAME</th>
                         <th>PRICE</th>
                         <th>STOCK</th>
+                        <th>Max MSRP</th>
+                        <th>Min MSRP</th>
                     </tr>
                 </table style="align-content: center">
                 <form id="form" action="./index.php" method="POST">
@@ -50,6 +62,8 @@
                 <th>NAME</th>
                 <th>PRICE</th>
                 <th>STOCK</th>
+                <th>Max MSRP</th>
+                <th>Min MSRP</th>
             </tr>
             <tr if="row0">
                 <!--put the form shit here-->
@@ -64,6 +78,12 @@
                 </td>
                 <td>
                     <input type="number" name="stock0" id="stock0" placeholder="amount">
+                </td>
+                <td>
+                    <input type="number" name="max0" id="max0" placeholder="max msrp">
+                </td>
+                <td>
+                    <input type="number" name="min0" id="min0" placeholder="min msrp">
                 </td>
                 <td>
                     <input type="button" id="log" value="log" onclick="owo()">
