@@ -191,7 +191,7 @@ function makeJSON() {
             document.getElementById("error").innerHTML = this.responseText;
         }
     }
-    xhttp.open("GET", "./write.php?json=" + json + "&user=" + curr, true);
+    xhttp.open("GET", "./write.php?json=" + json, true);
     xhttp.send();
 }
 
