@@ -7,6 +7,14 @@ body{
     color: white;
 }
 
+#suggTable * {
+    border: 1px solid white;
+    border-collapse: collapse;
+    width: 50%;
+    height: 35%;
+    background-color: darkgray;
+}
+
 #display * {
     border: 1px solid #ffffff;
     border-collapse: collapse;
